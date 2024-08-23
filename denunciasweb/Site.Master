@@ -1,0 +1,348 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="denunciasWeb.SiteMaster" %>
+
+<pages maintainscrollpositiononpostback="true">
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Denuncias Web</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body style="margin-bottom:129px">
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#3d6277">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="color:white" onmouseover="this.style.color='gray';" onmouseout="this.style.color='white';" runat="server" href="~/">
+
+                         <img src="img/logoBambaMed.jpg" width="30" height="30" style="display:inline" alt="">
+                        Denuncias Web</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a  style="color:white"  onmouseover="this.style.color='gray';" onmouseout="this.style.color='white';" runat="server" href="~/">Inicio</a></li>
+                       <%-- <li><a runat="server" href="~/About">Acerca de</a></li>
+                        <li><a runat="server" href="~/Contact">Contacto</a></li>--%>
+
+                          <% if (Request.IsAuthenticated)
+                              { %>
+                            <%--<li><a runat="server" href="~/Account/ProductosInformados">Productos Informados</a></li>--%>
+                            <li><a  style="color:white" onmouseover="this.style.color='gray';" onmouseout="this.style.color='white';"  runat="server" href="~/Account/Evaluacion">Evaluación</a></li>
+                           <%-- <li><a runat="server" href="~/Account/IndicadoresGestion">Indicadores de Gestión</a></li>--%>
+
+
+
+                        <% } %>
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a style="color:white" onmouseover="this.style.color='gray';" onmouseout="this.style.color='white';" runat="server" href="~/Account/Register">Registrarse</a></li>
+                                <li><a style="color:white" onmouseover="this.style.color='gray';" onmouseout="this.style.color='white';" runat="server" href="~/Account/Login">Iniciar sesión</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Salir" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="container body-content">
+
+            <div class="row row-offcanvas row-offcanvas-right"> 
+                <div class="col-12 col-md-9">
+
+
+                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+                    </div>
+                <div style="margin-top:250px" class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+            <a href="#"  style="background-color:#3d6277" class="list-group-item active">ENLACES DE INTERES</a>
+            <a href="https://www.facebook.com/gtm.contrafalme.oficial/" class="list-group-item">
+                <img src="img/botonFacebook.png" width="30" height="30" style="display:inline"/>
+                Facebook del GTM Contrafalme</a>
+            <a href="http://www.digemid.minsa.gob.pe/main.asp?Seccion=1004" class="list-group-item">
+                
+                 <img src="img/digemid.png" width="30" height="30" style="display:inline"/>
+                
+                Página de Digemid contra el Comercio Ilegal</a>
+           <%-- <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>--%>
+          </div>
+        </div><!--/span-->
+            </div>
+
+
+
+           
+            <hr />
+      <%--      <footer>
+
+
+
+
+
+                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+            </footer>--%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+            <style>
+.footer {
+  position: fixed;
+  left: 0;
+  
+  bottom: 0;
+  width: 100%;
+  background-color: #3d6277;
+  color: white;
+  text-align: center;
+  clear:both;
+      font-size:10px
+}
+</style>
+
+<%--<div class="footer">
+
+ 
+
+<div class="m-t-3"></div>
+
+<footer class="mainfooter" role="contentinfo">
+
+
+    
+  <div class="footer-middle">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>Digemid</h4>
+            <h5>Dirección General de Medicamentos, Insumos y Drogas</h5>
+          <address>
+								<ul class="list-unstyled">
+									<li  >
+                                       Dirección: Av. Parque de las Leyendas 240 Torre B - San Miguel<br>
+									</li>
+									<li>
+										
+									</li>
+								</ul>
+							</address>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>Contáctanos</h4>
+          <ul class="list-unstyled">
+            <li>Central telefónica: 51-1-631-4300</li>
+            <li><a href="#">Payment Center</a></li>
+            <li><a href="#">Contact Directory</a></li>
+           
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>Website Information</h4>
+          <ul class="list-unstyled">
+            <li><a href="#">Website Tutorial</a></li>
+            <li><a href="#">Accessibility</a></li>
+            
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <!--Column1-->
+        <div class="footer-pad">
+          <h4>Popular Departments</h4>
+          <ul class="list-unstyled">
+            <li><a href="#">Parks and Recreation</a></li>
+            <li><a href="#">Public Works</a></li>
+            
+            
+            <li>
+              <a href="#"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <!--Footer Bottom-->
+          <p class="text-xs-center">&copy; Derechos Reservados 2019- City of USA.  All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+     
+  
+</div>
+
+
+
+
+          
+        </div>--%>
+    </form>
+</body>
+</html>
